@@ -119,3 +119,19 @@ function reiniciarJuego() {
   // Enfocar el campo de entrada después de reiniciar el juego
   campoEntrada.focus();
 }
+// Esta función se llama al cargar la página para cargar el párrafo inicial y configurar los event listeners
+window.onload = function () {
+
+// Cargar el párrafo según la dificultad
+cargarParrafo();
+
+// Enfocar el campo de entrada al cargar la página
+campoEntrada.focus();
+
+// Agregar event listener para detectar la escritura en el campo de entrada
+campoEntrada.addEventListener("input", iniciarEscritura);
+
+// Agregar event listener para el botón de reintentar
+btnIntentarDeNuevo.addEventListener("click", reiniciarJuego);
+
+};
