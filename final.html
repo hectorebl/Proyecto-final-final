@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego de mecanografía</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div class="seccionPrincipal">
+        <h1>Resultados</h1>
+        <div class="board">
+            <p id="mensajeAgradecimiento"></p>
+            <br>
+            <p id="mensajeResultado"></p>
+            <br>
+        <a href="index.html"><button class="botones">
+            Volver a jugar
+          </button></a>
+          
+        <a href="principal.html"><button class="botones">
+            Volver a inicio
+          </button></a>
+    </div>
+    <script>
+        window.onload = function() {
+             // Recuperar los valores de PPM y CPM del almacenamiento local
+ const ppm = localStorage.getItem('ppm');
+ const cpm = localStorage.getItem('cpm');
+
+ // Mensaje de agradecimiento
+ let mensaje = '';
+        if (parseInt(ppm) <= 44) {
+            mensaje = `¡Sigue practicando! Tu PPM es menor o igual a la media.`;
+        } else {
+            mensaje = `¡Muy bien! Escribes más palabras por minuto que la media. Sigue mejorando.`;
+        }
+        mensaje += ` La media es de 44 PPM `
+        document.getElementById('mensajeAgradecimiento').innerText = mensaje;
+
+let resultado = ` Tu PPM es ${ppm} y tu CPM es ${cpm}.`;
+        document.getElementById('mensajeResultado').innerText = resultado;
+
+ // Limpiar los valores del almacenamiento local después de usarlos
+ localStorage.removeItem('ppm');
+ localStorage.removeItem('cpm');
+
+        };
+    </script>
+  </body>
+</html>
